@@ -48,14 +48,14 @@ function App() {
       </div>
 
       {/* Other stats */}
-      <div className="flex justify-center mt-24">
-        <div className="text-white text-4xl font-semibold">
+      <div className="flex justify-center mt-36 bg-gray-600 rounded-full py-5 opacity-50">
+        <div className="text-white text-6xl font-semibold">
           <p>65%</p>
         </div>
-        <div className="text-white text-4xl font-semibold">
+        <div className="text-white text-6xl font-semibold">
           <p>20%</p>
         </div>
-        <div className="text-white text-4xl font-semibold">
+        <div className="text-white text-6xl font-semibold">
           <p>12 MPH</p>
         </div>
       </div>
