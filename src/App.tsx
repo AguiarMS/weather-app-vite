@@ -46,7 +46,7 @@ function App() {
       className="w-full h-[100vh] py-20 bg-cover"
     >
       <div>
-        <p className="px-8 font-sans text-2xl	text-white">{data.name}</p>
+        <p className="px-10 font-sans font-nunito text-4xl	text-white">{data.name}</p>
       </div>
 
       <div className="mt-4">
