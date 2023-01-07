@@ -6,6 +6,11 @@ export type Props = {
   name: string;
   main: {
     feels_like: number;
+    humidity: number;
+    temp: number;
+  };
+  wind: {
+    speed: number;
   };
 };
 
@@ -14,6 +19,11 @@ function App() {
     name: "",
     main: {
       feels_like: 0,
+      humidity: 0,
+      temp: 0,
+    },
+    wind: {
+      speed: 0,
     },
   });
   const [location, setLocation] = useState("");
@@ -40,7 +50,9 @@ function App() {
       </div>
 
       <div className="mt-4">
-        <p className="px-10 text-8xl font-bold text-white	">60º F</p>
+        <p className="px-10 text-8xl font-bold text-white	">
+          {data.main.temp}º F
+        </p>
         <p className="flex justify-end px-8 font-sans text-2xl	text-white">
           Clouds
         </p>
@@ -60,15 +72,15 @@ function App() {
       {/* Other stats */}
       <div className="flex justify-evenly mt-36 ml-56 mr-56 bg-gray-600 rounded-xl py-5 opacity-50">
         <div className="text-white font-semibold">
-          <p className="flex justify-center text-4xl">65ºF</p>
-          <p className="text-2xl mt-4">{data.main.Feels_like}</p>
+          <p className="flex justify-center text-4xl">{data.main.feels_like}</p>
+          <p className="text-2xl mt-4">Feels Like</p>
         </div>
         <div className="text-white text-6xl font-semibold">
-          <p className="flex justify-center text-4xl">20%</p>
+          <p className="flex justify-center text-4xl">{data.main.humidity}</p>
           <p className="text-2xl mt-4">Humidity</p>
         </div>
         <div className="text-white text-6xl font-semibold">
-          <p className="flex justify-center text-4xl">12 MPH</p>
+          <p className="flex justify-center text-4xl">{data.wind.speed}</p>
           <p className="text-2xl mt-4">Wind Speed</p>
         </div>
       </div>
