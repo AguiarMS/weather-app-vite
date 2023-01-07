@@ -1,9 +1,21 @@
 import axios from "axios";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { useState } from "react";
+import { ReactElement, ReactNode, useState } from "react";
+
+export type Props = {
+  name: string;
+  main: {
+    feels_like: number;
+  };
+};
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<Props>({
+    name: "",
+    main: {
+      feels_like: 0,
+    },
+  });
   const [location, setLocation] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
@@ -14,7 +26,7 @@ function App() {
         setData(response.data);
         console.log(response.data);
       });
-      setLocation('')
+      setLocation("");
     }
   };
 
@@ -24,7 +36,7 @@ function App() {
       className="w-full h-[100vh] py-20 bg-cover"
     >
       <div>
-        <p className="px-8 font-sans text-2xl	text-white">Dallas</p>
+        <p className="px-8 font-sans text-2xl	text-white">{data.name}</p>
       </div>
 
       <div className="mt-4">
@@ -37,11 +49,11 @@ function App() {
       <div className="flex justify-center">
         <input
           className="mt-20 rounded py-2 px-2"
-          type="text"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyUpCapture={searchLocation}
           placeholder="Enter Location"
+          type="text"
         />
       </div>
 
@@ -49,7 +61,7 @@ function App() {
       <div className="flex justify-evenly mt-36 ml-56 mr-56 bg-gray-600 rounded-xl py-5 opacity-50">
         <div className="text-white font-semibold">
           <p className="flex justify-center text-4xl">65ºF</p>
-          <p className="text-2xl mt-4">Feels Like</p>
+          <p className="text-2xl mt-4">{data.main.Feels_like}</p>
         </div>
         <div className="text-white text-6xl font-semibold">
           <p className="flex justify-center text-4xl">20%</p>
