@@ -71,9 +71,6 @@ function App() {
         <p className="px-10 text-8xl font-bold text-white	">
           {data.main.temp}º F
         </p>
-        <p className="flex justify-end px-8 font-sans text-2xl	text-white">
-          Clouds
-        </p>
       </div>
 
       <div className="flex justify-center">
@@ -88,21 +85,24 @@ function App() {
       </div>
 
       {/* Other stats */}
-      <div className="flex justify-evenly mt-36 ml-56 mr-56 bg-gray-600 rounded-xl py-5 opacity-50">
+      <div className="flex justify-center max-w-md mx-auto mt-36 bg-slate-900 bg-opacity-60 rounded-xl py-20">
         <div className="text-white font-semibold">
-          <p className="flex justify-center text-4xl">{data.main.feels_like}</p>
-          {/* {data.weather[0].icon !== '' && <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon-weather" />}
-           */}
-           <img src={Icons(data.weather[0].main)} alt="" />
-          <p className="text-2xl mt-4">Feels Like</p>
-        </div>
-        <div className="text-white text-6xl font-semibold">
-          <p className="flex justify-center text-4xl">{data.main.humidity}</p>
-          <p className="text-2xl mt-4">Humidity</p>
-        </div>
-        <div className="text-white text-6xl font-semibold">
-          <p className="flex justify-center text-4xl">{data.wind.speed}</p>
-          <p className="text-2xl mt-4">Wind Speed</p>
+          <div>
+            {/* {data.weather[0].icon !== '' && <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon-weather" />}
+             */}
+            {/* <p className="flex justify-end text-4xl">
+               {data.main.feels_like}
+             </p> */}
+            <img className="" src={Icons(data.weather[0].main)} alt="icon-weather" />
+            <p className="text-2xl mt-4">Feels Like</p>
+
+            <div className="grid grid-cols-3 divide-x-[3px] gap-2 mt-10 border rounded-lg p-2">
+              <div className="">01</div>
+              <div>02</div>
+              <div>03</div>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
