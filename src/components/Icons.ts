@@ -1,4 +1,5 @@
-const Icons = (icon: any) => {
+
+const Icons = (icon: string) => {
   switch (icon) {
     case "Thunderstorm":
       icon = "icons/thunderstorms-rain.svg";

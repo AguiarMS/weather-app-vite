@@ -1,5 +1,6 @@
 import axios from "axios";
 import Icons from "./components/Icons";
+// import clearDay from './icons/clear-day.svg'
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useState } from "react";
 
@@ -13,9 +14,11 @@ export type Props = {
   wind: {
     speed: number;
   };
-  weather: {
-    icon: string;
-  };
+  weather: [
+    {
+      icon: string;
+    }
+  ];
 };
 
 function App() {
@@ -29,9 +32,11 @@ function App() {
     wind: {
       speed: 0,
     },
-    weather: {
-      icon: "",
-    },
+    weather: [
+      {
+        icon: "",
+      },
+    ],
   });
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState("");
@@ -39,11 +44,12 @@ function App() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${data.weather.icon}@2x.png`;
 
-  const searchLocation = (event: React.KeyboardEvent<HTMLElement>) => {
+  const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
-      axios.get(url).then((response) => {
+      await axios.get(url).then((response) => {
         setData(response.data);
         console.log(response.data);
+        setIcon(data.weather[0].icon);
       });
       setLocation("");
     }
