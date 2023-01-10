@@ -48,7 +48,7 @@ function App() {
     if (event.key === "Enter") {
       await axios.get(url).then((response) => {
         setData(response.data);
-        console.log("DATA", response.data);
+        // console.log("DA/TA", response.data);
         setIcon(data.weather[0].icon);
       });
       setLocation("");
