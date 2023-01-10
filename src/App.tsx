@@ -1,6 +1,5 @@
 import axios from "axios";
 import Icons from "./components/Icons";
-// import clearDay from './icons/clear-day.svg'
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useState } from "react";
 
@@ -17,6 +16,7 @@ export type Props = {
   weather: [
     {
       icon: string;
+      main: string;
     }
   ];
 };
@@ -35,6 +35,7 @@ function App() {
     weather: [
       {
         icon: "",
+        main: "",
       },
     ],
   });
@@ -42,7 +43,7 @@ function App() {
   const [icon, setIcon] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
-  const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
@@ -90,7 +91,9 @@ function App() {
       <div className="flex justify-evenly mt-36 ml-56 mr-56 bg-gray-600 rounded-xl py-5 opacity-50">
         <div className="text-white font-semibold">
           <p className="flex justify-center text-4xl">{data.main.feels_like}</p>
-          <img src={WEATHER_IMG} alt="icon-weather" />
+          {/* {data.weather[0].icon !== '' && <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon-weather" />}
+           */}
+           <img src={Icons(data.weather[0].main)} alt="" />
           <p className="text-2xl mt-4">Feels Like</p>
         </div>
         <div className="text-white text-6xl font-semibold">
