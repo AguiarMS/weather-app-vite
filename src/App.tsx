@@ -61,8 +61,6 @@ function App() {
       style={{ backgroundImage: `url(${backgroundWeather})` }}
       className="w-full h-[100vh] py-20 bg-cover"
     >
-      
-
       <div className="flex justify-center">
         <input
           className="mt-20 rounded py-2 px-2"
@@ -101,7 +99,10 @@ function App() {
             />
 
             <div className="grid grid-cols-3 gap-2 mt-10 border rounded-lg p-2">
-              <div className="">teste 01</div>
+              <div className="">
+                teste 01
+                <p>teste</p>
+              </div>
               <div className="">teste 02</div>
               <div className="">teste 03</div>
             </div>
