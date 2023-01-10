@@ -1,6 +1,7 @@
 import axios from "axios";
+import Icons from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { ReactElement, ReactNode, useState } from "react";
+import { useState } from "react";
 
 export type Props = {
   name: string;
@@ -11,6 +12,9 @@ export type Props = {
   };
   wind: {
     speed: number;
+  };
+  weather: {
+    icon: string;
   };
 };
 
@@ -25,10 +29,15 @@ function App() {
     wind: {
       speed: 0,
     },
+    weather: {
+      icon: "",
+    },
   });
   const [location, setLocation] = useState("");
+  const [icon, setIcon] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
+  //const WEATHER_IMG = `http://openweathermap.org/img/wn/${data.weather.icon}@2x.png`;
 
   const searchLocation = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
@@ -46,7 +55,9 @@ function App() {
       className="w-full h-[100vh] py-20 bg-cover"
     >
       <div>
-        <p className="px-10 font-sans font-nunito text-4xl	text-white">{data.name}</p>
+        <p className="px-10 font-sans font-nunito text-4xl	text-white">
+          {data.name}
+        </p>
       </div>
 
       <div className="mt-4">
@@ -73,6 +84,7 @@ function App() {
       <div className="flex justify-evenly mt-36 ml-56 mr-56 bg-gray-600 rounded-xl py-5 opacity-50">
         <div className="text-white font-semibold">
           <p className="flex justify-center text-4xl">{data.main.feels_like}</p>
+          <img src={Icons(icon)} alt="icon-weather" />
           <p className="text-2xl mt-4">Feels Like</p>
         </div>
         <div className="text-white text-6xl font-semibold">
