@@ -4,7 +4,6 @@ import backgroundWeather from "./assets/img-weather.jpg";
 import { useCallback, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 
-
 function App() {
   const [data, setData] = useState<WeatherProps>({
     name: "",
@@ -92,20 +91,15 @@ function App() {
             {/* <p className="flex justify-end text-4xl">
                {data.main.feels_like}
              </p> */}
-            <p className="flex justify-center text-2xl mt-4">Feels Like</p>
-            <img
-              className=""
-              src={Icons(data.weather[0].main)}
-              alt="icon-weather"
-            />
+            <img src={Icons(data.weather[0].main)} alt="icon-weather" />
 
-            <div className="grid grid-cols-3 gap-2 mt-10 border rounded-lg p-2">
+            <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
               <div className="">
-                teste 01
-                <p>teste</p>
+                <p className="text-lg">Humidity: {data.main.humidity}</p>
               </div>
-              <div className="">teste 02</div>
-              <div className="">teste 03</div>
+              <div className="">
+                <p className="text-lg">Wind Speed: {data.wind.speed}</p>
+              </div>
             </div>
           </div>
         </div>
