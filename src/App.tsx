@@ -70,16 +70,16 @@ function App() {
       {/* Other stats */}
       <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
         <div className="flex justify-center flex-col mr-10">
-          <p className="px-10 text-8xl font-bold text-white	">
+          <p className="px-10 text-8xl font-bold text-white	mb-4">
             {data.main.temp}º F
           </p>
 
           {data.dt && (
             <div>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mt-4">
                 {handleTime().convertData}
               </p>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mt-4">
                 {handleTime().week}
               </p>
             </div>
