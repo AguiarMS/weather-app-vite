@@ -2,28 +2,11 @@ import axios from "axios";
 import Icons from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useCallback, useState } from "react";
+import { WeatherProps } from "./types/weatherProps";
 
-export type Props = {
-  name: string;
-  main: {
-    feels_like: number;
-    humidity: number;
-    temp: number;
-  };
-  wind: {
-    speed: number;
-  };
-  weather: [
-    {
-      icon: string;
-      main: string;
-    }
-  ];
-  dt?: number;
-};
 
 function App() {
-  const [data, setData] = useState<Props>({
+  const [data, setData] = useState<WeatherProps>({
     name: "",
     main: {
       feels_like: 0,
