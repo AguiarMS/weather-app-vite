@@ -1,7 +1,7 @@
 import axios from "axios";
 import Icons from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export type Props = {
   name: string;
@@ -19,6 +19,7 @@ export type Props = {
       main: string;
     }
   ];
+  dt?: number;
 };
 
 function App() {
@@ -42,7 +43,9 @@ function App() {
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
+
+  //const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
@@ -54,6 +57,15 @@ function App() {
       });
       setLocation("");
     }
+  };
+
+  const handleTime = () => {
+    const timeStamp = data.dt || 0;
+    const convertData = new Date(timeStamp * 1000).toLocaleString("pt-BR");
+    const week = new Date(timeStamp * 1000).toLocaleString("pt-BR", {
+      weekday: "long",
+    });
+    return { convertData, week };
   };
 
   return (
@@ -75,14 +87,20 @@ function App() {
       {/* Other stats */}
       <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
         <div className="flex justify-center flex-col mr-10">
-          <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-            {data.name}
-          </p>
           <p className="px-10 text-8xl font-bold text-white	">
             {data.main.temp}º F
           </p>
-          {/* <p className="text-2xl text-white">teste</p>
-          <p className="text-2xl text-white">teste</p> */}
+
+          {data.dt && (
+            <div>
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
+                {handleTime().convertData}
+              </p>
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
+                {handleTime().week}
+              </p>
+            </div>
+          )}
         </div>
         <div className="text-white font-semibold">
           <div className="ml-10">

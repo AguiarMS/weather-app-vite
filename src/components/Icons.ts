@@ -25,10 +25,6 @@ const Icons = (icon: string) => {
       icon = Snow;
       console.log("Snow");
       break;
-    case "Atmosphere":
-      icon = "icons/weather.svg";
-      console.log("Weather");
-      break;
     case "Clouds":
       icon = Fog;
       console.log("Fog");
@@ -47,5 +43,17 @@ const Icons = (icon: string) => {
   }
   return icon;
 };
+
+
+// const Icons2 = {
+//   Thunderstorm: 'Thunderstorm',
+//   Drizzle: 'drizzle',
+//   Rain: 'rain',
+//   Snow: 'snow',
+//   Clouds: 'clouds',
+//   Haze: 'haze',
+//   Smoke: 'smoke',
+//   ClearDay: 'clearDay',
+// }
 
 export default Icons;
