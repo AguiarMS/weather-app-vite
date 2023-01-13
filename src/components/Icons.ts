@@ -45,15 +45,15 @@ const Icons = (icon: string) => {
 };
 
 
-// const Icons2 = {
-//   Thunderstorm: 'Thunderstorm',
-//   Drizzle: 'drizzle',
-//   Rain: 'rain',
-//   Snow: 'snow',
-//   Clouds: 'clouds',
-//   Haze: 'haze',
-//   Smoke: 'smoke',
-//   ClearDay: 'clearDay',
-// }
+export const IconsWeather = {
+  Thunderstorm,
+  Drizzle,
+  Rain,
+  Snow,
+  Clouds: Fog,
+  Haze,
+  Smoke,
+  Clear: clearDay,
+}
 
 export default Icons;

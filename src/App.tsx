@@ -1,33 +1,14 @@
 import axios from "axios";
-import Icons from "./components/Icons";
+import Icons, { IconsWeather } from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useCallback, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 
 function App() {
-  const [data, setData] = useState<WeatherProps>({
-    name: "",
-    main: {
-      feels_like: 0,
-      humidity: 0,
-      temp: 0,
-    },
-    wind: {
-      speed: 0,
-    },
-    weather: [
-      {
-        icon: "",
-        main: "",
-      },
-    ],
-  });
+  const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
-  const [icon, setIcon] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-
-  //const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
@@ -35,7 +16,6 @@ function App() {
       await axios.get(url).then((response) => {
         setData(response.data);
         console.log("DATA", response.data);
-        setIcon(data.weather[0].icon);
       });
       setLocation("");
     }
@@ -71,28 +51,32 @@ function App() {
       <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
         {/* Fazer if ternario para exibição das infos */}
         <div className="flex justify-center flex-col mr-10">
-          <p className="px-10 text-3xl font-bold text-white	mb-4">{data.name}</p>
-          <p className="px-10 text-8xl font-bold text-white	mb-4">
-            {data.main.temp}º F
+          <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
+            {data.name}
           </p>
-
+          <p className="px-10 text-8xl font-bold text-white	mb-4">
+            {data.main.temp} ºC
+          </p>
           {data.dt && (
             <div>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mt-4">
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
                 {handleTime().convertData}
               </p>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mt-4">
+              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
                 {handleTime().week}
               </p>
             </div>
           )}
+          {/* <p className="text-2xl text-white">teste</p>
+          <p className="text-2xl text-white">teste</p> */}
         </div>
+
 
         <div className="text-white font-semibold">
           <div className="ml-10">
             {data.name && (
               <>
-                <img src={Icons(data.weather[0].main)} alt="icon-weather" />
+                <img src={IconsWeather[data.weather[0].main]} alt="icon-weather" />
 
                 <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
                   <div className="">
