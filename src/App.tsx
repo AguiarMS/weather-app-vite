@@ -23,7 +23,7 @@ export type Props = {
 };
 
 function App() {
-  const [data, setData] = useState<Props>({
+  const [data, setData] = useState<WeatherProps>({
     name: "",
     main: {
       feels_like: 0,
@@ -67,6 +67,15 @@ function App() {
     return { convertData, week };
   };
 
+  const handleTime = () => {
+    const timeStamp = data.dt || 0;
+    const convertData = new Date(timeStamp * 1000).toLocaleString("pt-BR");
+    const week = new Date(timeStamp * 1000).toLocaleString("pt-BR", {
+      weekday: "long",
+    });
+    return { convertData, week };
+  };
+
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
@@ -84,7 +93,11 @@ function App() {
       </div>
 
       {/* Other stats */}
+      
       <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
+
+
+        {/* Fazer if ternario para exibição das infos */}
         <div className="flex justify-center flex-col mr-10">
           <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
             {data.name}
@@ -105,29 +118,28 @@ function App() {
           {/* <p className="text-2xl text-white">teste</p>
           <p className="text-2xl text-white">teste</p> */}
         </div>
-        <div className="text-white font-semibold">
-          <div className="ml-10">
-            {/* {data.weather[0].icon !== '' && <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon-weather" />}
-             */}
-            {/* <p className="flex justify-end text-4xl">
-               {data.main.feels_like}
-             </p> */}
-            <p className="flex justify-center text-2xl mt-4">Feels Like</p>
-            <img
-              className=""
-              src={Icons(data.weather[0].main)}
-              alt="icon-weather"
-            />
 
-            <div className="grid grid-cols-3 gap-2 mt-10 border rounded-lg p-2">
-              <div className="">
-                teste 01
-                <p>teste</p>
-              </div>
-              <div className="">teste 02</div>
-              <div className="">teste 03</div>
-            </div>
+
+
+        <div className="text-white font-semibold">
+
+          <div className="ml-10">
+            {data.name && (
+              <>
+                <img src={Icons(data.weather[0].main)} alt="icon-weather" />
+
+                <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
+                  <div className="">
+                    <p className="text-lg">Humidity: {data.main.humidity}</p>
+                  </div>
+                  <div className="">
+                    <p className="text-lg">Wind Speed: {data.wind.speed}</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
+
         </div>
       </div>
     </div>
