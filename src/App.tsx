@@ -3,7 +3,6 @@ import { IconsWeather } from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays } from "./components/NextDays";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -36,9 +35,10 @@ function App() {
       style={{ backgroundImage: `url(${backgroundWeather})` }}
       className="w-full h-[100vh]  bg-cover"
     >
+      
       <div className="flex justify-center">
         <input
-          className="mt-20 rounded py-2 px-2"
+          className="mt-20 rounded py-2 px-2 w-[58%]"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyUpCapture={searchLocation}
@@ -98,9 +98,16 @@ function App() {
         </div>
       </div>
 
-      {/* Component NextDays */}
-      <NextDays />
-
+      {/* <NextDays /> */}
+      <div className="flex justify-center max-w-6xl mx-auto mt-12 bg-slate-900 bg-opacity-60 text-white rounded-xl py-10">
+        <div className="grid grid-cols-5 divide-x space-x-8">
+          <div>segunda</div>
+          <div>terça</div>
+          <div>quarta</div>
+          <div>quinta</div>
+          <div>sexta</div>
+        </div>
+      </div>
     </div>
   );
 }
