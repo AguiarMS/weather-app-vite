@@ -67,10 +67,8 @@ function App() {
       </div>
 
       {/* Other stats */}
-      
+
       <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
-
-
         {/* Fazer if ternario para exibição das infos */}
         <div className="flex justify-center flex-col mr-10">
           <p className="px-10 text-3xl font-bold text-white	mb-4">{data.name}</p>
@@ -90,10 +88,7 @@ function App() {
           )}
         </div>
 
-
-
         <div className="text-white font-semibold">
-
           <div className="ml-10">
             {data.name && (
               <>
@@ -110,7 +105,15 @@ function App() {
               </>
             )}
           </div>
-
+        </div>
+      </div>
+      <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 text-white rounded-xl py-10">
+        <div className="grid grid-cols-5 divide-x space-x-8">
+          <div className="">segunda</div>
+          <div className="">terça</div>
+          <div>quarta</div>
+          <div>quinta</div>
+          <div>sexta</div>
         </div>
       </div>
     </div>
