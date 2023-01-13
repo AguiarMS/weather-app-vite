@@ -1,7 +1,7 @@
 import axios from "axios";
-import Icons, { IconsWeather } from "./components/Icons";
+import { IconsWeather } from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
-      className="w-full h-[100vh] py-20 bg-cover"
+      className="w-full h-[100vh]  bg-cover"
     >
       <div className="flex justify-center">
         <input
@@ -48,14 +48,14 @@ function App() {
 
       {/* Other stats */}
 
-      <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 rounded-xl py-20">
+      <div className="flex justify-center max-w-6xl mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20">
         {/* Fazer if ternario para exibição das infos */}
         <div className="flex justify-center flex-col mr-10">
           <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
             {data.name}
           </p>
           <p className="px-10 text-8xl font-bold text-white	mb-4">
-            {data.main.temp} ºC
+            {data?.main?.temp} ºC
           </p>
           {data.dt && (
             <div>
@@ -71,12 +71,17 @@ function App() {
           <p className="text-2xl text-white">teste</p> */}
         </div>
 
-
         <div className="text-white font-semibold">
           <div className="ml-10">
             {data.name && (
               <>
-                <img src={IconsWeather[data.weather[0].main]} alt="icon-weather" />
+                <div className="flex justify-center">
+                  <img
+                    className="w-48"
+                    src={IconsWeather[data.weather[0].main]}
+                    alt="icon-weather"
+                  />
+                </div>
 
                 <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
                   <div className="">
@@ -91,7 +96,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center max-w-6xl mx-auto mt-20 bg-slate-900 bg-opacity-60 text-white rounded-xl py-10">
+      <div className="flex justify-center max-w-6xl mx-auto mt-12 bg-slate-900 bg-opacity-60 text-white rounded-xl py-10">
         <div className="grid grid-cols-5 divide-x space-x-8">
           <div className="">segunda</div>
           <div className="">terça</div>
