@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.5",
     "axios": "^1.2.2",
     "react": "^18.2.0",
     "react-country-flag": "^3.0.2",

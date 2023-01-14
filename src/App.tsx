@@ -5,11 +5,14 @@ import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
+import { Alert } from "@material-tailwind/react";
+
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
+  const urlForecast = `api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
@@ -22,11 +25,17 @@ function App() {
     }
   };
 
+  const Forecast = () => {};
+
   const searchButtonLocation = async () => {
-    await axios.get(url).then((response) => {
-      setData(response.data);
-      console.log("BUTTON SEARCH EVENT", response.data);
-    });
+    if (location === "") {
+      alert("Enter with your location");
+    } else {
+      await axios.get(url).then((response) => {
+        setData(response.data);
+        console.log("BUTTON SEARCH EVENT", response.data);
+      });
+    }
   };
 
   const handleTime = () => {
@@ -58,6 +67,8 @@ function App() {
         >
           Search
         </button>
+
+        
       </div>
 
       {/* Other stats */}
@@ -74,7 +85,9 @@ function App() {
           ) : (
             <>
               <div className="flex justify-center">
-                <h2 className="text-4xl text-white font-bold">Enter with your region above</h2>
+                <h2 className="text-4xl text-white font-bold">
+                  Enter with your region above
+                </h2>
               </div>
               <FlagIcon />
             </>
@@ -119,12 +132,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div></div>
 
-      {data.name && (
-        <NextDays />
-      )}
-      
+      {data.name && <NextDays />}
     </div>
   );
 }
