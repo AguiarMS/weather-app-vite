@@ -6,13 +6,13 @@ import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
 
-
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
+  const [forcast, setForcast] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const urlForecast = `api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}`;
+  const urlForecast = `api.openweathermap.org/data/2.5/forecast?q=${forcast}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
@@ -67,7 +67,6 @@ function App() {
         >
           Search
         </button>
-        
       </div>
 
       {/* Other stats */}
