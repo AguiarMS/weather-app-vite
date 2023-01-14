@@ -63,7 +63,7 @@ function App() {
       {/* Other stats */}
 
       <div className="flex justify-center max-w-6xl mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20">
-        {/* Fazer if ternario para exibição das infos */}
+
         <div className="flex justify-center flex-col mr-10">
           <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
             {data.name}
@@ -74,8 +74,8 @@ function App() {
             </p>
           ) : (
             <FlagIcon />
-            // ======================================================
           )}
+
           {data.dt && (
             <div>
               <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
