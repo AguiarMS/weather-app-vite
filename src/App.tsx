@@ -63,7 +63,6 @@ function App() {
       {/* Other stats */}
 
       <div className="flex justify-center max-w-6xl mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20">
-
         <div className="flex justify-center flex-col mr-10">
           <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
             {data.name}
@@ -73,7 +72,12 @@ function App() {
               {data?.main?.temp} ºC
             </p>
           ) : (
-            <FlagIcon />
+            <>
+              <div className="flex justify-center">
+                <h2 className="text-4xl text-white font-bold">Enter with your region above</h2>
+              </div>
+              <FlagIcon />
+            </>
           )}
 
           {data.dt && (
@@ -117,7 +121,10 @@ function App() {
       </div>
       <div></div>
 
-      <NextDays />
+      {data.name && (
+        <NextDays />
+      )}
+      
     </div>
   );
 }
