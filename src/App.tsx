@@ -5,7 +5,7 @@ import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
-import { Alert } from "@material-tailwind/react";
+
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -67,7 +67,6 @@ function App() {
         >
           Search
         </button>
-
         
       </div>
 
