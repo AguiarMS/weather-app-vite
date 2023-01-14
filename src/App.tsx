@@ -4,7 +4,7 @@ import backgroundWeather from "./assets/img-weather.jpg";
 import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
-
+import { FlagIcon } from "./components/FlagIcons";
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
@@ -72,7 +72,10 @@ function App() {
             <p className="px-10 text-8xl font-bold text-white	mb-4">
               {data?.main?.temp} ºC
             </p>
-          ) : (<h1 className="text-5xl text-white">[Icone paises]</h1>)}
+          ) : (
+            <FlagIcon />
+            // ======================================================
+          )}
           {data.dt && (
             <div>
               <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
@@ -88,7 +91,7 @@ function App() {
         </div>
 
         <div className="text-white font-semibold">
-          <div className="ml-10">
+          <div className="">
             {data.name && (
               <>
                 <div className="flex justify-center">
@@ -112,17 +115,9 @@ function App() {
           </div>
         </div>
       </div>
+      <div></div>
 
       <NextDays />
-      {/* <div className="flex justify-center max-w-6xl mx-auto mt-12 bg-slate-900 bg-opacity-60 text-white rounded-xl py-10">
-        <div className="grid grid-cols-5 divide-x space-x-8">
-          <div>segunda</div>
-          <div>terça</div>
-          <div>quarta</div>
-          <div>quinta</div>
-          <div>sexta</div>
-        </div>
-      </div> */}
     </div>
   );
 }
