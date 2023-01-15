@@ -1,17 +1,20 @@
 import axios from "axios";
 import { IconsWeather } from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
+import { WeatherPropsSaoPaulo } from "./types/weatherSP";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
+  const [weatherSP, setWeatherSP] = useState<WeatherPropsSaoPaulo>({} as WeatherPropsSaoPaulo);
   const [location, setLocation] = useState("");
   const [forcast, setForcast] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
+  const WEATHER_SP = `https://api.openweathermap.org/data/2.5/weather?lat=-23.5475&lon=-46.6361&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
   const urlForecast = `api.openweathermap.org/data/2.5/forecast?q=${forcast}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
   //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
@@ -25,7 +28,12 @@ function App() {
     }
   };
 
-  const Forecast = () => {};
+  const weatherSaoPaulo = async () => {
+    await axios.get(WEATHER_SP).then((response) => {
+      setWeatherSP(response.data);
+      console.log("DATA", response.data);
+    });
+  };
 
   const searchButtonLocation = async () => {
     if (location === "") {
@@ -82,12 +90,12 @@ function App() {
             </p>
           ) : (
             <>
-              <div className="flex justify-center">
-                <h2 className="text-4xl text-white font-bold">
-                  Enter with your region above
-                </h2>
+              <div className="flex space-x-4">
+                <div className="text-white">{weatherSP.name}</div>
+                <div className="text-white">Rio de Janeiro</div>
+                <div className="text-white">Minas Gerais</div>
               </div>
-              <FlagIcon />
+              {/* <FlagIcon /> */}
             </>
           )}
 
