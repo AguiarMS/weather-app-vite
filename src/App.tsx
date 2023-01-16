@@ -91,7 +91,7 @@ function App() {
           ) : (
             <>
               <div className="flex space-x-4">
-                <div className="text-white">{weatherSP.name}</div>
+                <div className="text-white">Sao paulo</div>
                 <div className="text-white">Rio de Janeiro</div>
                 <div className="text-white">Minas Gerais</div>
               </div>
