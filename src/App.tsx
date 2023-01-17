@@ -99,31 +99,7 @@ function App() {
             </>
           )}
 
-          {data.dt && (
-            <div>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
-                {handleTime().convertData}
-              </p>
-              <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-                {handleTime().week}
-              </p>
-            </div>
-          )}
-          {/* <p className="text-2xl text-white">teste</p>
-          <p className="text-2xl text-white">teste</p> */}
-        </div>
-
-        <div className="text-white font-semibold">
-          <div className="">
-            {data.name && (
-              <>
-                <div className="flex justify-center">
-                  <img
-                    className="w-48"
-                    src={IconsWeather[data.weather[0].main]}
-                    alt="icon-weather"
-                  />
-                </div>
+      {/* Other stats */}
 
                 <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
                   <div className="">
