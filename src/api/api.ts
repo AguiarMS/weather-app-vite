@@ -1,1 +1,1 @@
-export const url = `http://api.weatherapi.com/v1/current.json?key=c7e30488434144be82c223711231601&q=${location}`;
+export const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=9dead2446a419236580e0c47b09e4784`;

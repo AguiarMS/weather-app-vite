@@ -1,9 +1,5 @@
 export type WeatherProps = {
-  location: {
-    name: string;
-  };
-  current: {
-    temp_c: number;
-  };
+  name: string;
+
   dt?: number;
 };
