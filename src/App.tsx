@@ -4,13 +4,11 @@ import backgroundWeather from "./assets/img-weather.jpg";
 import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 
-// import { url } from "./api/api";
+import { url } from "./api/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=9dead2446a419236580e0c47b09e4784`;
 
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
