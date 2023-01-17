@@ -1,28 +1,9 @@
 export type WeatherProps = {
-  name: string;
-  main: {
-    feels_like: number;
-    humidity: number;
-    temp: number;
-    temp_min: number;
-    temp_max: number;
+  location: {
+    name: string;
   };
-  wind: {
-    speed: number;
+  current: {
+    temp_c: number;
   };
-  weather: [
-    {
-      icon: string;
-      main:
-        | "Thunderstorm"
-        | "Drizzle"
-        | "Rain"
-        | "Snow"
-        | "Clouds"
-        | "Haze"
-        | "Smoke"
-        | "Clear"
-    }
-  ];
   dt?: number;
 };

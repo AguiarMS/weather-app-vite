@@ -1,22 +1,15 @@
 import axios from "axios";
 import { IconsWeather } from "./components/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays } from "./components/NextDays";
-import { FlagIcon } from "./components/FlagIcons";
-import { WeatherPropsSaoPaulo } from "./types/weatherSP";
+
+import { url } from "./api/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
-  const [weatherSP, setWeatherSP] = useState<WeatherPropsSaoPaulo>({} as WeatherPropsSaoPaulo);
   const [location, setLocation] = useState("");
-  const [forcast, setForcast] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const WEATHER_SP = `https://api.openweathermap.org/data/2.5/weather?lat=-23.5475&lon=-46.6361&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
-  const urlForecast = `api.openweathermap.org/data/2.5/forecast?q=${forcast}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
@@ -28,12 +21,6 @@ function App() {
     }
   };
 
-  const weatherSaoPaulo = async () => {
-    await axios.get(WEATHER_SP).then((response) => {
-      setWeatherSP(response.data);
-      console.log("DATA", response.data);
-    });
-  };
 
   const searchButtonLocation = async () => {
     if (location === "") {
@@ -79,43 +66,8 @@ function App() {
 
       {/* Other stats */}
 
-      <div className="flex justify-center max-w-6xl mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20">
-        <div className="flex justify-center flex-col mr-10">
-          <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-            {data.name}
-          </p>
-          {data.name ? (
-            <p className="px-10 text-8xl font-bold text-white	mb-4">
-              {data?.main?.temp} ºC
-            </p>
-          ) : (
-            <>
-              <div className="flex space-x-4">
-                <div className="text-white">Sao paulo</div>
-                <div className="text-white">Rio de Janeiro</div>
-                <div className="text-white">Minas Gerais</div>
-              </div>
-              {/* <FlagIcon /> */}
-            </>
-          )}
+      <div className="text-white">Name: {data.location.name}</div>
 
-      {/* Other stats */}
-
-                <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
-                  <div className="">
-                    <p className="text-lg">Humidity: {data.main.humidity}</p>
-                  </div>
-                  <div className="">
-                    <p className="text-lg">Wind Speed: {data.wind.speed}</p>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {data.name && <NextDays />}
     </div>
   );
 }
