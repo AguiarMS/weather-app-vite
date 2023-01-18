@@ -5,16 +5,12 @@ import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
-import { WeatherPropsSaoPaulo } from "./types/weatherSP";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { api } from "./services/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
-  const [weatherSP, setWeatherSP] = useState<WeatherPropsSaoPaulo>(
-    {} as WeatherPropsSaoPaulo
-  );
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
 
@@ -103,12 +99,7 @@ function App() {
             </p>
           ) : (
             <>
-              <div className="flex space-x-4">
-                <div className="text-white">Rio de Janeiro</div>
-                <div className="text-white">Minas Gerais</div>
-                {RandomLocation(dataRandom)}
-              </div>
-              {/* <FlagIcon /> */}
+              {RandomLocation(dataRandom)}
             </>
           )}
 
