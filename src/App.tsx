@@ -25,7 +25,6 @@ function App() {
   const [location, setLocation] = useState("");
   const [forcast, setForcast] = useState("");
 
-
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
       await axios.get(url).then((response) => {
@@ -62,12 +61,10 @@ function App() {
   };
 
   useEffect(() => {
-    return () => {
-      weatherSaoPaulo();
-      weatherRioJaneiro();
-      weatherMinasGerais();
-      weatherMatoGrosso();
-    };
+    weatherSaoPaulo();
+    weatherRioJaneiro();
+    weatherMinasGerais();
+    weatherMatoGrosso();
   }, []);
 
   const searchButtonLocation = async () => {
