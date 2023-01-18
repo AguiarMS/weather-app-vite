@@ -170,7 +170,6 @@ export const FlagIcon = () => {
           title="JP"
         />
       </div>
-
     </div>
   );
 };

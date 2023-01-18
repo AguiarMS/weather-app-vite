@@ -7,10 +7,13 @@ import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
 import { WeatherPropsSaoPaulo } from "./types/weatherSP";
 import { RandomLocaltion } from "./components/RandomLocation";
+import { InputSearch } from "./components/InputSearch/InputSearch";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
-  const [weatherSP, setWeatherSP] = useState<WeatherPropsSaoPaulo>({} as WeatherPropsSaoPaulo);
+  const [weatherSP, setWeatherSP] = useState<WeatherPropsSaoPaulo>(
+    {} as WeatherPropsSaoPaulo
+  );
   const [location, setLocation] = useState("");
   const [forcast, setForcast] = useState("");
 
@@ -29,12 +32,12 @@ function App() {
     }
   };
 
-  const weatherSaoPaulo = async () => {
-    await axios.get(WEATHER_SP).then((response) => {
-      setWeatherSP(response.data);
-      console.log("DATA", response.data);
-    });
-  };
+  // const weatherSaoPaulo = async () => {
+  //   await axios.get(WEATHER_SP).then((response) => {
+  //     setWeatherSP(response.data);
+  //     console.log("DATA", response.data);
+  //   });
+  // };
 
   const searchButtonLocation = async () => {
     if (location === "") {
@@ -56,14 +59,19 @@ function App() {
     return { convertData, week };
   };
 
- 
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
       className="w-full h-[100vh]  bg-cover"
     >
       <div className="flex justify-center">
-        <input
+        <InputSearch
+          location={location}
+          searchButtonLocation={searchButtonLocation}
+          searchLocation={searchLocation}
+          setLocation={setLocation}
+        />
+        {/* <input
           className="mt-20 rounded-l-md py-2 px-2 w-[55%]"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
@@ -76,7 +84,7 @@ function App() {
           onClick={searchButtonLocation}
         >
           Search
-        </button>
+        </button> */}
       </div>
 
       {/* Other stats */}
