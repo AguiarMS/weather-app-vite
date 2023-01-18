@@ -14,7 +14,7 @@ function App() {
   const [dataRandom, setDataRandom] = useState<string[]>([]);
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const array = ["sao paulo", "dallas", "Tokyo"];
+  const array = ["São paulo", "Dallas", "Tokyo"];
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {

@@ -21,7 +21,7 @@ export type WeatherProps = {
         | "Clouds"
         | "Haze"
         | "Smoke"
-        | "Clear"
+        | "Clear";
     }
   ];
   dt?: number;
