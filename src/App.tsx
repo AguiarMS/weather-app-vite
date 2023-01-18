@@ -4,7 +4,6 @@ import backgroundWeather from "./assets/img-weather.jpg";
 import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
-import { FlagIcon } from "./components/FlagIcons";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { api } from "./services/api";

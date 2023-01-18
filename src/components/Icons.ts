@@ -1,15 +1,15 @@
-import Rain from "../icons/rain.svg";
-import clearDay from "../icons/clear-day.svg";
-import Drizzle from "../icons/drizzle.svg";
-import Fog from "../icons/fog.svg";
-import Haze from "../icons/haze.svg";
-import Smoke from "../icons/fog.svg";
-import Snow from "../icons/snow.svg";
-import Thunderstorm from "../icons/fog.svg";
-import Barometer from '../icons/barometer.svg'
-import Celsius from '../icons/celsius.svg'
-import ClearDay from '../icons/clear-day.svg'
-import Cloudy from '../icons/cloudy.svg'
+import Rain from "../assets/rain.svg";
+import clearDay from "../assets/clear-day.svg";
+import Drizzle from "../assets/drizzle.svg";
+import Fog from "../assets/fog.svg";
+import Haze from "../assets/haze.svg";
+import Smoke from "../assets/fog.svg";
+import Snow from "../assets/snow.svg";
+import Thunderstorm from "../assets/fog.svg";
+import Barometer from '../assets/barometer.svg'
+import Celsius from '../assets/celsius.svg'
+import ClearDay from '../assets/clear-day.svg'
+import Cloudy from '../assets/cloudy.svg'
 
 export const IconsWeather = {
   Thunderstorm,
