@@ -1,3 +1,7 @@
+export type RandomLocationProps = {
+  id: number;
+  name: string;
+};
 
 export function RandomLocation(data: string[]) {
   return (
@@ -5,7 +9,7 @@ export function RandomLocation(data: string[]) {
       <div className="flex justify-center flex-col mr-10">
         <div className="flex space-x-4">
           {data.map((item) => (
-            <div key={item.id} className="text-white">
+            <div key={item.id} className="text-white px-36 py-40 ">
               {item.name}
             </div>
           ))}
