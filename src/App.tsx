@@ -6,6 +6,7 @@ import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
 import { WeatherPropsSaoPaulo } from "./types/weatherSP";
+import { RandomLocaltion } from "./components/RandomLocation";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -55,6 +56,7 @@ function App() {
     return { convertData, week };
   };
 
+ 
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
@@ -94,6 +96,7 @@ function App() {
                 <div className="text-white">{weatherSP.name}</div>
                 <div className="text-white">Rio de Janeiro</div>
                 <div className="text-white">Minas Gerais</div>
+                {RandomLocaltion()}
               </div>
               {/* <FlagIcon /> */}
             </>
