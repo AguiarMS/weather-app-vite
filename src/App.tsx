@@ -6,7 +6,6 @@ import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays";
 import { FlagIcon } from "./components/FlagIcons";
 import { WeatherPropsSaoPaulo } from "./types/weatherSP";
-import { RandomLocaltion } from "./components/RandomLocation";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { api } from "./services/api";
@@ -19,9 +18,8 @@ function App() {
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
 
-
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const array = ['sao paulo', 'dallas', 'Tokyo']
+  const array = ["sao paulo", "dallas", "Tokyo"];
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
@@ -32,13 +30,6 @@ function App() {
       setLocation("");
     }
   };
-
-  // const weatherSaoPaulo = async () => {
-  //   await axios.get(WEATHER_SP).then((response) => {
-  //     setWeatherSP(response.data);
-  //     console.log("DATA", response.data);
-  //   });
-  // };
 
   const searchButtonLocation = async () => {
     if (location === "") {
@@ -51,14 +42,18 @@ function App() {
     }
   };
 
-   async function locations(location: string){
+  async function locations(location: string) {
     await api
-    .get(`/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`)
-    .then((response) => {setDataRandom( (oldData: any) => [...oldData, response.data])})
-    .catch((err) => {
+      .get(
+        `/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
+      )
+      .then((response) => {
+        setDataRandom((oldData: any) => [...oldData, response.data]);
+      })
+      .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-}
+  }
 
   const handleTime = () => {
     const timeStamp = data.dt || 0;
@@ -69,25 +64,17 @@ function App() {
     return { convertData, week };
   };
 
+  useEffect(() => {
+    array.forEach((item) => locations(item));
+  }, []);
 
-  useEffect(()=>{
-    array.forEach( item => locations(item))        
-},[])
-
- 
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
       className="w-full h-[100vh]  bg-cover"
     >
       <div className="flex justify-center">
-        <InputSearch
-          location={location}
-          searchButtonLocation={searchButtonLocation}
-          searchLocation={searchLocation}
-          setLocation={setLocation}
-        />
-        {/* <input
+        <input
           className="mt-20 rounded-l-md py-2 px-2 w-[55%]"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
@@ -100,7 +87,7 @@ function App() {
           onClick={searchButtonLocation}
         >
           Search
-        </button> */}
+        </button>
       </div>
 
       {/* Other stats */}
