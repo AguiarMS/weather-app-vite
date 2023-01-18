@@ -1,9 +1,9 @@
 import axios from "axios";
-import { IconsWeather } from "./components/Icons";
+import { IconsWeather } from "./icons/Icons";
 import backgroundWeather from "./assets/img-weather.jpg";
 import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays } from "./components/NextDays";
+import { NextDays } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { api } from "./services/api";
@@ -88,9 +88,7 @@ function App() {
               {data?.main?.temp} ºC
             </p>
           ) : (
-            <>
-              {RandomLocation(dataRandom)}
-            </>
+            <>{RandomLocation(dataRandom)}</>
           )}
 
           {data.dt && (
