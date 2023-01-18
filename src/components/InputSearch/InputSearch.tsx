@@ -1,8 +1,13 @@
 import { InputProps } from "./types";
 
-export const InputSearch = ({location}: InputProps) => {
+export const InputSearch = ({
+  location,
+  searchButtonLocation,
+  searchLocation,
+  setLocation,
+}: InputProps) => {
   return (
-    <div>
+    <div className="flex justify-center">
       <input
         className="mt-20 rounded-l-md py-2 px-2 w-[55%]"
         value={location}
