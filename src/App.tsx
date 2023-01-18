@@ -8,6 +8,8 @@ import { FlagIcon } from "./components/FlagIcons";
 import { WeatherPropsSaoPaulo } from "./types/weatherSP";
 import { RandomLocaltion } from "./components/RandomLocation";
 import { InputSearch } from "./components/InputSearch/InputSearch";
+import { RandomLocation } from "./components/RandomLocation";
+import { api } from "./services/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -15,12 +17,11 @@ function App() {
     {} as WeatherPropsSaoPaulo
   );
   const [location, setLocation] = useState("");
-  const [forcast, setForcast] = useState("");
+  const [dataRandom, setDataRandom] = useState<string[]>([]);
+
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const WEATHER_SP = `https://api.openweathermap.org/data/2.5/weather?lat=-23.5475&lon=-46.6361&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`;
-  const urlForecast = `api.openweathermap.org/data/2.5/forecast?q=${forcast}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  //const WEATHER_IMG = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  const array = ['sao paulo', 'dallas', 'Tokyo']
 
   const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter") {
@@ -50,6 +51,15 @@ function App() {
     }
   };
 
+   async function locations(location: string){
+    await api
+    .get(`/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`)
+    .then((response) => {setDataRandom( (oldData: any) => [...oldData, response.data])})
+    .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+}
+
   const handleTime = () => {
     const timeStamp = data.dt || 0;
     const convertData = new Date(timeStamp * 1000).toLocaleString("pt-BR");
@@ -59,6 +69,12 @@ function App() {
     return { convertData, week };
   };
 
+
+  useEffect(()=>{
+    array.forEach( item => locations(item))        
+},[])
+
+ 
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
@@ -101,10 +117,9 @@ function App() {
           ) : (
             <>
               <div className="flex space-x-4">
-                <div className="text-white">{weatherSP.name}</div>
                 <div className="text-white">Rio de Janeiro</div>
                 <div className="text-white">Minas Gerais</div>
-                {RandomLocaltion()}
+                {RandomLocation(dataRandom)}
               </div>
               {/* <FlagIcon /> */}
             </>
