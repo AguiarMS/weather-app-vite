@@ -25,4 +25,8 @@ export type WeatherProps = {
     }
   ];
   dt?: number;
+  coord: {
+    lon: number;
+    lat: number;
+  }
 };
