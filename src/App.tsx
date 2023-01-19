@@ -1,54 +1,19 @@
-import axios from "axios";
 import { IconsWeather } from "./icons/Icons";
-import backgroundWeather from "./assets/img-weather.jpg";
 import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
-import { api } from "./services/api";
+import { citys } from "./mock/citys";
+import backgroundWeather from "./assets/img-weather.jpg";
+import { getRandomLocations } from "./functions/getRandomLocations";
+import { getLocationFor5days } from "./functions/getLocationFor5days";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
-  const array = ["São paulo", "Dallas", "Tokyo"];
-
-  const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === "Enter") {
-      await axios.get(url).then((response) => {
-        setData(response.data);
-        console.log("DATA", response.data);
-      });
-      setLocation("");
-    }
-  };
-
-  const searchButtonLocation = async () => {
-    if (location === "") {
-      alert("Enter with your location");
-    } else {
-      await axios.get(url).then((response) => {
-        setData(response.data);
-        console.log("BUTTON SEARCH EVENT", response.data);
-      });
-    }
-  };
-
-  async function locations(location: string) {
-    await api
-      .get(
-        `/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
-      )
-      .then((response) => {
-        setDataRandom((oldData: any) => [...oldData, response.data]);
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }
+  const [dataDays, setDataDays] = useState<string[]>([]);
 
   const handleTime = () => {
     const timeStamp = data.dt || 0;
@@ -60,9 +25,11 @@ function App() {
   };
 
   useEffect(() => {
-    array.forEach((item) => locations(item));
+    citys.forEach((item) => getRandomLocations(item, setDataRandom));
   }, []);
 
+
+  console.log('data', data)
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
@@ -71,8 +38,7 @@ function App() {
       {/* Button Search */}
       <InputSearch
         location={location}
-        searchButtonLocation={searchButtonLocation}
-        searchLocation={searchLocation}
+        setData={setData}
         setLocation={setLocation}
       />
 

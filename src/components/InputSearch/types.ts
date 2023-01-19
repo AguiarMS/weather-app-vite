@@ -1,6 +1,7 @@
+import { WeatherProps } from "../../types/weatherProps";
+
 export type InputProps = {
   location: string;
   setLocation: (value: React.SetStateAction<string>) => void;
-  searchLocation: (event: React.KeyboardEvent<HTMLElement>) => void;
-  searchButtonLocation: () => void;
+  setData: React.Dispatch<React.SetStateAction<WeatherProps>>
 };
