@@ -11,6 +11,8 @@ export function RandomLocation(data: string[]) {
             >
               <p className="text-2xl">{item.name}</p>
               <div className="text-2xl">{item?.main?.temp}</div>
+
+              
             </div>
           ))}
         </div>
