@@ -1,41 +1,49 @@
 import { IconsWeather } from "./icons/Icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays } from "./components/NextDays/NextDays";
+import { NextDays, NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { citys } from "./mock/citys";
 import backgroundWeather from "./assets/img-weather.jpg";
 import { getRandomLocations } from "./functions/getRandomLocations";
-import { getLocationFor5days } from "./functions/getLocationFor5days";
+import {
+  getLocationFor5days,
+  getLocationFor5daysProps,
+} from "./functions/getLocationFor5days";
+import { handleTime } from "./functions/handleTime";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
-  const [dataDays, setDataDays] = useState<string[]>([]);
+  const [dataDays, setDataDays] = useState<getLocationFor5daysProps[]>([]);
 
-  const handleTime = () => {
-    const timeStamp = data.dt || 0;
-    const convertData = new Date(timeStamp * 1000).toLocaleString("pt-BR");
-    const week = new Date(timeStamp * 1000).toLocaleString("pt-BR", {
-      weekday: "long",
-    });
-    return { convertData, week };
-  };
+
 
   useEffect(() => {
     citys.forEach((item) => getRandomLocations(item, setDataRandom));
   }, []);
 
+  useEffect(() => {
+    if (Object.keys(data).length !== 0) {
+      getLocationFor5days(data.coord.lat, data.coord.lon, setDataDays);
 
-  console.log('data', data)
+      setTimeout(() => {
+        NextDaysProps(dataDays);
+      }, 5000);
+    }
+  }, [data]);
+
+  
+  // console.log("data", data);
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
       className="w-full h-[100vh]  bg-cover"
     >
       {/* Button Search */}
+
       <InputSearch
         location={location}
         setData={setData}
@@ -61,10 +69,10 @@ function App() {
             {data.dt && (
               <div>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
-                  {handleTime().convertData}
+                  {handleTime(data.dt).convertData}
                 </p>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-                  {handleTime().week}
+                  {handleTime(data.dt).week}
                 </p>
               </div>
             )}
@@ -102,6 +110,7 @@ function App() {
       )}
 
       {data.name && <NextDays />}
+      {NextDaysProps(dataDays)}
     </div>
   );
 }
