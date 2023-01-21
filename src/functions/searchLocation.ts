@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { api } from "../services/api";
 import { WeatherProps } from "../types/weatherProps";
 
