@@ -69,10 +69,10 @@ function App() {
             {data.dt && (
               <div>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
-                  {handleTime(data.dt).convertData}
+                  {handleTime(data.dt).convertDateWithHour}
                 </p>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-                  {handleTime(data.dt).week}
+                  {handleTime(data.dt, 'long').week}
                 </p>
               </div>
             )}

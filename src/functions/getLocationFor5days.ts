@@ -21,7 +21,7 @@ export async function getLocationFor5days(
 ) {
   await api
     .get(
-      `/forecast?lat=${lat}&lon=${lon}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f`
+      `/forecast?lat=${lat}&lon=${lon}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
     )
     .then((response) => {
       setDataDays(response.data.list);
