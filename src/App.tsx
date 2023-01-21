@@ -1,42 +1,24 @@
+import axios from "axios";
 import { IconsWeather } from "./icons/Icons";
-import { useEffect, useState, useCallback } from "react";
+
 import { WeatherProps } from "./types/weatherProps";
 import { NextDays, NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
-import { citys } from "./mock/citys";
-import backgroundWeather from "./assets/img-weather.jpg";
-import { getRandomLocations } from "./functions/getRandomLocations";
-import {
-  getLocationFor5days,
-  getLocationFor5daysProps,
-} from "./functions/getLocationFor5days";
-import { handleTime } from "./functions/handleTime";
+
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
-  const [dataDays, setDataDays] = useState<getLocationFor5daysProps[]>([]);
 
 
 
   useEffect(() => {
-    citys.forEach((item) => getRandomLocations(item, setDataRandom));
+    array.forEach((item) => locations(item));
   }, []);
 
-  useEffect(() => {
-    if (Object.keys(data).length !== 0) {
-      getLocationFor5days(data.coord.lat, data.coord.lon, setDataDays);
 
-      setTimeout(() => {
-        NextDaysProps(dataDays);
-      }, 5000);
-    }
-  }, [data]);
-
-  
-  // console.log("data", data);
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
