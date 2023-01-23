@@ -1,23 +1,57 @@
 import axios from "axios";
 import { IconsWeather } from "./icons/Icons";
-
+import backgroundWeather from "./assets/img-weather.jpg";
+import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays, NextDaysProps } from "./components/NextDays/NextDays";
+import { NextDays } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
-
+import { api } from "./services/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<string[]>([]);
 
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`;
+  const array = ["São paulo", "Dallas", "Tokyo"];
 
+  const searchLocation = async (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter") {
+      await axios.get(url).then((response) => {
+        setData(response.data);
+        console.log("DATA", response.data);
+      });
+      setLocation("");
+    }
+  };
+
+
+  async function locations(location: string) {
+    await api
+      .get(
+        `/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
+      )
+      .then((response) => {
+        setDataRandom((oldData: any) => [...oldData, response.data]);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }
+
+  const handleTime = () => {
+    const timeStamp = data.dt || 0;
+    const convertData = new Date(timeStamp * 1000).toLocaleString("pt-BR");
+    const week = new Date(timeStamp * 1000).toLocaleString("pt-BR", {
+      weekday: "long",
+    });
+    return { convertData, week };
+  };
 
   useEffect(() => {
     array.forEach((item) => locations(item));
   }, []);
-
 
   return (
     <div
@@ -25,7 +59,6 @@ function App() {
       className="w-full h-[100vh]  bg-cover"
     >
       {/* Button Search */}
-
       <InputSearch
         location={location}
         setData={setData}
@@ -51,10 +84,10 @@ function App() {
             {data.dt && (
               <div>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-1">
-                  {handleTime(data.dt).convertDateWithHour}
+                  {handleTime().convertData}
                 </p>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-                  {handleTime(data.dt, 'long').week}
+                  {handleTime().week}
                 </p>
               </div>
             )}
@@ -92,7 +125,6 @@ function App() {
       )}
 
       {data.name && <NextDays />}
-      {NextDaysProps(dataDays)}
     </div>
   );
 }
