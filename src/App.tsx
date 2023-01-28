@@ -1,7 +1,7 @@
 import { IconsWeather } from "./icons/Icons";
 import { useEffect, useState, useCallback } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import { NextDays, NextDaysProps } from "./components/NextDays/NextDays";
+import {  NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { citys } from "./mock/citys";
@@ -12,11 +12,12 @@ import {
   getLocationFor5daysProps,
 } from "./functions/getLocationFor5days";
 import { handleTime } from "./functions/handleTime";
+import { IRandonLocationData } from "./components/RandomLocation/types";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
-  const [dataRandom, setDataRandom] = useState<string[]>([]);
+  const [dataRandom, setDataRandom] = useState<IRandonLocationData[]>([]);
   const [dataDays, setDataDays] = useState<getLocationFor5daysProps[]>([]);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
             </p>
             {data.name ? (
               <p className="px-10 text-8xl font-bold text-white	mb-4">
-                {data?.main?.temp} ºC
+                {data?.main?.temp.toFixed(0)} ºC
               </p>
             ) : (
               <>{RandomLocation(dataRandom)}</>
@@ -107,7 +108,6 @@ function App() {
         <>{RandomLocation(dataRandom)}</>
       )}
 
-      {data.name && <NextDays />}
       {NextDaysProps(dataDays)}
     </div>
   );

@@ -1,0 +1,1 @@
+2export type Regions = "BR" |"FR" |"GB" |"EG" 
