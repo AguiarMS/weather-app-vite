@@ -1,3 +1,5 @@
+import { TweatherIcons } from "../icons/types";
+
 export type WeatherProps = {
   name: string;
   main: {
@@ -13,15 +15,7 @@ export type WeatherProps = {
   weather: [
     {
       icon: string;
-      main:
-        | "Thunderstorm"
-        | "Drizzle"
-        | "Rain"
-        | "Snow"
-        | "Clouds"
-        | "Haze"
-        | "Smoke"
-        | "Clear";
+      main:TweatherIcons;
     }
   ];
   dt?: number;

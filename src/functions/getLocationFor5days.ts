@@ -1,17 +1,22 @@
 import { SetStateAction } from "react";
+import { TweatherIcons } from "../icons/types";
 import { api } from "../services/api";
 
 export interface getLocationFor5daysProps {
   dt: number;
   dt_txt: string;
   main: {
+    temp: number;
     temp_max: number;
     temp_min: number;
     humidity: number;
   };
-  weather: {
-    main: string;
-  }
+  weather: [
+    {
+      icon: string;
+      main:TweatherIcons
+    }
+  ];
 }
 
 export async function getLocationFor5days(

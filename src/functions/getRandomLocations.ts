@@ -1,7 +1,8 @@
 import { SetStateAction } from 'react';
+import { IRandonLocationData } from '../components/RandomLocation/types';
 import { api } from "../services/api";
 
-export async function getRandomLocations(location: string, setDataRandom: React.Dispatch<SetStateAction<string[]>>) {
+export async function getRandomLocations(location: string, setDataRandom: React.Dispatch<SetStateAction<IRandonLocationData[]>>) {
     await api
       .get(
         `/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
