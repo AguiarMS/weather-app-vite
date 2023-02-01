@@ -1,7 +1,7 @@
 import { IconsWeather } from "./icons/Icons";
 import { useEffect, useState, useCallback } from "react";
 import { WeatherProps } from "./types/weatherProps";
-import {  NextDaysProps } from "./components/NextDays/NextDays";
+import { NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { citys } from "./mock/citys";
@@ -34,7 +34,6 @@ function App() {
     }
   }, [data]);
 
-  
   // console.log("data", data);
   return (
     <div
@@ -71,7 +70,7 @@ function App() {
                   {handleTime(data.dt).convertDateWithHour}
                 </p>
                 <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
-                  {handleTime(data.dt, 'long').week}
+                  {handleTime(data.dt, "long").week}
                 </p>
               </div>
             )}

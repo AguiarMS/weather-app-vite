@@ -1,5 +1,6 @@
-import { useEffect } from "react";
 import { api } from "../services/api";
+import React, { useState } from "react";
+
 import { WeatherProps } from "../types/weatherProps";
 
 export const searchLocation = async (
@@ -11,7 +12,7 @@ export const searchLocation = async (
   location: string,
   setLocation: (value: React.SetStateAction<string>) => void
 ) => {
-  if (location === "") {
+  if (!location) {
     alert("Enter with your location");
   }
   if (event.key === "Enter" || event.type === "click") {

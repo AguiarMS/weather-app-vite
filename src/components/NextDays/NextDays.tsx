@@ -25,14 +25,14 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
     return (
         <div className="flex justify-center max-w-6xl mx-auto rounded-xl">
           {fiveDays.map((item) => (
-            <div key={item.date.dt_txt} className="flex flex-col p-10 ml-3 justify-center w-3xl mx-auto mt-12 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-3">
-              <p className="px-1 font-bold text-white mb-2">
+            <div key={item.date.dt_txt} className="flex flex-col p-10 ml-3 justify-center w-3xl mx-auto mt-5 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-1">
+              <p className="text-md text-white font-semibold py-1">
                 {handleTime(item.date.dt, "short").week}
               </p>
-              <p className="px-1 text-3xl font-bold text-white mb-2">
+              <p>
                 {handleTime(item.date.dt).day}
               </p>
-              <p className="px-1 font-bold text-white mb-2">
+              <p>
                 {handleTime(item.date.dt).month}
               </p>
               <div className="flex justify-center">
