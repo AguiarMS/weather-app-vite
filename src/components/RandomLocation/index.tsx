@@ -15,24 +15,35 @@ const imgCitys: Record<Regions, string> = {
 export function RandomLocation(data: IRandonLocationData[]) {
   return (
     <div className="flex justify-center max-w-full mx-auto mt-10 bg-slate-900 bg-opacity-60 rounded-xl py-16 px-20 ml-10 mr-10">
-      <div className="flex justify-center flex-col ">
+      <div
+        className="lg:flex lg:justify-center lg:flex-col
+                      md:grid-cols-1"
+      >
         <p className="flex justify-center text-3xl text-white mb-8">
           Previsão do tempo ao redor do mundo
         </p>
-        <div className="flex space-x-4 ">
-          {data.map((item, index) => (
-            <div className="flex" key={item.id}>
-              <div className="text-white px-8 py-8 rounded-xl flex flex-col items-center">
-                <p className="text-2xl">{item.name}</p>
+
+        <div className="md:grid md:grid-cols-1 lg:space-x-4 md1142:flex lg:grid lg:grid-cols-2">
+          {data.map((item) => (
+            <div className="md:grid md:grid-cols-1 md:flex-wrap" key={item.id}>
+              <div
+                className="text-white px-8 py-8 rounded-xl lg:flex lg:flex-col lg:items-center
+                md:mt-10 md:flex md:flex-col md:items-center sm:mt-10 sm:flex sm:flex-col sm:items-center 
+                miniSmall:mt-10 miniSmall:flex miniSmall:flex-col miniSmall:items-center
+                md1142:bg-slate-900 opacity-85 md:bg-slate-900 lg:bg-slate-900 opacity-85 sm:bg-slate-900 opacity-85
+                miniSmall:bg-slate-900
+              "
+              >
+                <p className="flex justify-center text-2xl items-center mb-4">
+                  {item.name}
+                </p>
                 <img
-                  className="w-40"
+                  className="lg:w-40"
                   src={imgCitys[item.sys.country]}
                   alt="icon-weather"
                 />
 
-                <div className="mt-7 w-full h-1 bg-white rounded"></div>
-
-                <div className="grid grid-cols-2 gap-2 mt-10 p-2">
+                <div className="grid grid-cols-2 gap-2 mt-10 p-2 border-2 rounded-md miniSmall:hidden">
                   <p className="text-md font-bold">
                     Humidity: {item?.main?.humidity}%
                   </p>
@@ -40,6 +51,7 @@ export function RandomLocation(data: IRandonLocationData[]) {
                     Wind Speed: {item.wind.speed}m/s
                   </p>
                 </div>
+
                 <div className="grid grid-cols-2 gap-2 mt-2 p-2">
                   <div className="flex justify-center">
                     <img
@@ -58,11 +70,6 @@ export function RandomLocation(data: IRandonLocationData[]) {
                   </div>
                 </div>
               </div>
-              {Boolean(data.length > index + 1) ? (
-                <div className="w-px h-full bg-slate-300" />
-              ) : (
-                <div />
-              )}
             </div>
           ))}
         </div>
