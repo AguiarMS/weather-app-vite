@@ -14,16 +14,15 @@ const imgCitys: Record<Regions, string> = {
 
 export function RandomLocation(data: IRandonLocationData[]) {
   return (
-    <div className="flex justify-center max-w-full mx-auto mt-10 bg-slate-900 bg-opacity-60 rounded-xl py-16 px-20">
+    <div className="flex justify-center max-w-full mx-auto mt-10 bg-slate-900 bg-opacity-60 rounded-xl py-16 px-20 ml-10 mr-10">
       <div className="flex justify-center flex-col ">
-        <p className="text-3xl text-white mb-8">Previsão do tempo ao redor do mundo</p>
-        <div className="flex space-x-4 " >
+        <p className="flex justify-center text-3xl text-white mb-8">
+          Previsão do tempo ao redor do mundo
+        </p>
+        <div className="flex space-x-4 ">
           {data.map((item, index) => (
             <div className="flex" key={item.id}>
-              <div
-                
-                className="text-white px-8 py-8 rounded-xl flex flex-col items-center"
-              >
+              <div className="text-white px-8 py-8 rounded-xl flex flex-col items-center">
                 <p className="text-2xl">{item.name}</p>
                 <img
                   className="w-40"
@@ -31,17 +30,15 @@ export function RandomLocation(data: IRandonLocationData[]) {
                   alt="icon-weather"
                 />
 
+                <div className="mt-7 w-full h-1 bg-white rounded"></div>
+
                 <div className="grid grid-cols-2 gap-2 mt-10 p-2">
-                  <div className="">
-                    <p className="text-sm font-bold">
-                      Humidity: {item?.main?.humidity}%
-                    </p>
-                  </div>
-                  <div className="">
-                    <p className="text-sm font-bold">
-                      Wind Speed: {item.wind.speed}m/s
-                    </p>
-                  </div>
+                  <p className="text-md font-bold">
+                    Humidity: {item?.main?.humidity}%
+                  </p>
+                  <p className="text-sm font-bold">
+                    Wind Speed: {item.wind.speed}m/s
+                  </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mt-2 p-2">
                   <div className="flex justify-center">
@@ -61,7 +58,11 @@ export function RandomLocation(data: IRandonLocationData[]) {
                   </div>
                 </div>
               </div>
-               {Boolean(data.length > index + 1 ) ? <div className="w-px h-full bg-slate-300" /> : <div/>  }
+              {Boolean(data.length > index + 1) ? (
+                <div className="w-px h-full bg-slate-300" />
+              ) : (
+                <div />
+              )}
             </div>
           ))}
         </div>

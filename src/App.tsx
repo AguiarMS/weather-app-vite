@@ -38,7 +38,7 @@ function App() {
   return (
     <div
       style={{ backgroundImage: `url(${backgroundWeather})` }}
-      className="w-full h-[100vh]  bg-cover"
+      className="w-full h-[100vh] bg-cover"
     >
       {/* Button Search */}
 
