@@ -1,5 +1,5 @@
 import { IconsWeather } from "./icons/Icons";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { WeatherProps } from "./types/weatherProps";
 import { NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
@@ -36,10 +36,7 @@ function App() {
 
   // console.log("data", data);
   return (
-    <div
-      style={{ backgroundImage: `url(${backgroundWeather})` }}
-      className="w-full h-[100vh] bg-cover"
-    >
+    <div>
       {/* Button Search */}
 
       <InputSearch
