@@ -1,4 +1,5 @@
 import { TweatherIcons } from "../../icons/types";
+import { Regions } from "../../mock/types";
 
 export interface IRandonLocationData {
   name: string;
