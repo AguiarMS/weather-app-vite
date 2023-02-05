@@ -48,7 +48,10 @@ function App() {
       {/* Other stats */}
 
       {data.name ? (
-        <div className="flex justify-center max-w-6xl mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20">
+        <div
+          className="sm:flex sm:justify-center sm:max-w-6xl sm:mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20
+                        iPhoneSE:mr-3 iPhoneSE:ml-3"
+        >
           <div className="flex justify-center flex-col mr-10">
             <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">
               {data.name}
@@ -79,7 +82,7 @@ function App() {
             <div className="">
               {data.name && (
                 <>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center max-md:hidden">
                     <img
                       className="w-48"
                       src={IconsWeather[data.weather[0].main]}
@@ -87,7 +90,7 @@ function App() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2">
+                  <div className="grid grid-cols-2 gap-2 mt-10 border rounded-lg p-2 max-md:hidden">
                     <div className="">
                       <p className="text-lg">Humidity: {data.main.humidity}</p>
                     </div>
