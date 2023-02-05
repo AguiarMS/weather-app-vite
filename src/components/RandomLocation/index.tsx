@@ -14,25 +14,27 @@ const imgCitys: Record<Regions, string> = {
 
 export function RandomLocation(data: IRandonLocationData[]) {
   return (
-    <div className="flex justify-center max-w-full mx-auto mt-10 bg-slate-900 bg-opacity-60 rounded-xl py-16 px-20 ml-10 mr-10">
+    <div className="flex justify-center max-w-full mx-auto mt-10 bg-slate-900 bg-opacity-60 rounded-xl py-16 px-20 ml-10 mr-10
+                     iPhoneSE:py-5 iPhoneSE:px-5
+    ">
       <div
         className="lg:flex lg:justify-center lg:flex-col
-                      md:grid-cols-1"
+                      md:grid-cols-1 "
       >
-        <p className="flex justify-center text-3xl text-white mb-8">
+        <p className="flex justify-center text-3xl text-white mb-8 iPhoneSE:mt-5
+                      iPhoneSE:text-xl">
           Previsão do tempo ao redor do mundo
         </p>
 
-        <div className="md:grid md:grid-cols-1 lg:space-x-4 md1142:flex lg:grid lg:grid-cols-2">
+        <div className="md:grid md:grid-cols-1 lg:space-x-4 lg1142:flex lg:grid lg:grid-cols-2">
           {data.map((item) => (
             <div className="md:grid md:grid-cols-1 md:flex-wrap" key={item.id}>
               <div
                 className="text-white px-8 py-8 rounded-xl lg:flex lg:flex-col lg:items-center
                 md:mt-10 md:flex md:flex-col md:items-center sm:mt-10 sm:flex sm:flex-col sm:items-center 
                 miniSmall:mt-10 miniSmall:flex miniSmall:flex-col miniSmall:items-center
-                md1142:bg-slate-900 opacity-85 md:bg-slate-900 lg:bg-slate-900 opacity-85 sm:bg-slate-900 opacity-85
-                miniSmall:bg-slate-900
-              "
+                lg1142:bg-slate-900 opacity-85 md:bg-slate-900 lg:bg-slate-900 opacity-85 sm:bg-slate-900 opacity-85
+                miniSmall:bg-slate-900"
               >
                 <p className="flex justify-center text-2xl items-center mb-4">
                   {item.name}
