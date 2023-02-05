@@ -4,6 +4,7 @@ import London from "../../assets/big-ben.png";
 import Cairo from "../../assets/gize.png";
 import { IRandonLocationData } from "./types";
 import { IconsWeather } from "../../icons/Icons";
+import { Regions } from "../../mock/types";
 
 const imgCitys: Record<Regions, string> = {
   BR: Rio,
