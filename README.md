@@ -1,4 +1,4 @@
-# weather-app-vite
+# weather-app-vite V1.0
 Aplicação para visualização da previsão do tempo / consumindo API externa
 
 
