@@ -13,12 +13,14 @@ import {
 } from "./functions/getLocationFor5days";
 import { handleTime } from "./functions/handleTime";
 import { IRandonLocationData } from "./components/RandomLocation/types";
+import { Loading } from "./components/LoadingSpinner/Loading";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
   const [location, setLocation] = useState("");
   const [dataRandom, setDataRandom] = useState<IRandonLocationData[]>([]);
   const [dataDays, setDataDays] = useState<getLocationFor5daysProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     citys.forEach((item) => getRandomLocations(item, setDataRandom));
@@ -33,6 +35,13 @@ function App() {
       }, 5000);
     }
   }, [data]);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, [])
 
   // console.log("data", data);
   return (
@@ -104,7 +113,13 @@ function App() {
           </div>
         </div>
       ) : (
-        <>{RandomLocation(dataRandom)}</>
+        <>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            RandomLocation(dataRandom)
+          )}
+        </>
       )}
 
       {NextDaysProps(dataDays)}
