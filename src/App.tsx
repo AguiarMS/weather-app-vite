@@ -114,7 +114,7 @@ function App() {
         </div>
       ) : (
         <>
-          {isLoading ? (
+          {!isLoading ? (
             <Loading />
           ) : (
             RandomLocation(dataRandom)
