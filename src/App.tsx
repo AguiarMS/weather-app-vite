@@ -5,7 +5,6 @@ import { NextDaysProps } from "./components/NextDays/NextDays";
 import { InputSearch } from "./components/InputSearch/InputSearch";
 import { RandomLocation } from "./components/RandomLocation";
 import { citys } from "./mock/citys";
-import backgroundWeather from "./assets/img-weather.jpg";
 import { getRandomLocations } from "./functions/getRandomLocations";
 import {
   getLocationFor5days,
@@ -114,7 +113,7 @@ function App() {
         </div>
       ) : (
         <>
-          {!isLoading ? (
+          {isLoading ? (
             <Loading />
           ) : (
             RandomLocation(dataRandom)
