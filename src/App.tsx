@@ -35,12 +35,11 @@ function App() {
     }
   }, [data]);
 
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, [])
+  }, []);
 
   // console.log("data", data);
   return (
@@ -112,13 +111,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            RandomLocation(dataRandom)
-          )}
-        </>
+        <>{isLoading ? <Loading /> : RandomLocation(dataRandom)}</>
       )}
 
       {NextDaysProps(dataDays)}

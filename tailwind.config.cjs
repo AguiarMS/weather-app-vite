@@ -7,6 +7,7 @@ module.exports = {
       screens: {
         'miniSmall': '100px',
         'lg1142': '1142px',
+        'md880': '860px',
         'iPhoneSE': '345px'
       }
     },
