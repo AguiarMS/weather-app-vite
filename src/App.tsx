@@ -13,6 +13,7 @@ import {
 import { handleTime } from "./functions/handleTime";
 import { IRandonLocationData } from "./components/RandomLocation/types";
 import { Loading } from "./components/LoadingSpinner/Loading";
+import { Carousel } from "./components/Carrousel/Carousel";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -57,7 +58,7 @@ function App() {
       {data.name ? (
         <div
           className="sm:flex sm:justify-center sm:max-w-6xl sm:mx-auto mt-14 bg-slate-900 bg-opacity-60 rounded-xl py-20
-                        iPhoneSE:mr-3 iPhoneSE:ml-3"
+                        iPhoneSE:mr-3 iPhoneSE:ml-3 cursor-pointer hover:scale-105 ease-in-out duration-300"
         >
           <div className="flex justify-center flex-col mr-10">
             <p className="px-10 font-sans font-nunito text-4xl	text-white mb-4">

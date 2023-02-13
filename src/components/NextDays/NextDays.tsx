@@ -26,7 +26,8 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
         {fiveDays.map((item) => (
           <div
             key={item.date.dt_txt}
-            className="flex flex-col p-10 ml-3 mr-3 justify-center w-3xl mx-auto mt-5 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-1"
+            className="flex flex-col p-10 ml-3 mr-3 justify-center w-3xl mx-auto mt-5 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-1
+            cursor-pointer hover:scale-105 ease-in-out duration-300"
           >
             <p className="text-md text-white font-semibold py-1">
               {handleTime(item.date.dt, "short").week}
