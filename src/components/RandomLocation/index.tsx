@@ -5,8 +5,6 @@ import Cairo from "../../assets/gize.png";
 import { IRandonLocationData } from "./types";
 import { IconsWeather } from "../../icons/Icons";
 import { Regions } from "../../mock/types";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
 
 const imgCitys: Record<Regions, string> = {
   BR: Rio,
@@ -14,8 +12,6 @@ const imgCitys: Record<Regions, string> = {
   GB: London,
   EG: Cairo,
 };
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 export function RandomLocation(data: IRandonLocationData[]) {
   return (
