@@ -17,9 +17,7 @@ export const searchLocation = async (
   }
   if (event.key === "Enter" || event.type === "click") {
     await api
-      .get(
-        `/weather?q=${location}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`
-      )
+      .get(`/weather?q=${location.trim()}&appid=65c3c0cccd9f4b6a9e7dd0106ee5371f&units=metric`)
       .then((response) => {
         setData(response.data);
       });
