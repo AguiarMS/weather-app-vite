@@ -24,10 +24,7 @@ export function RandomLocation(data: IRandonLocationData[]) {
         <div className="flex flex-row">
           <SwipeableViews enableMouseEvents>
             {data.map((item) => (
-              <div
-                className=" md:grid  md:grid-cols-1 lg:space-x-4 lg1142:flex lg:grid lg:grid-cols-2 md:flex-wrap"
-                key={item.id}
-              >
+              <div className="max-md:grid max-md   grid grid-cols-4" key={item.id}>
                 <div
                   className="text-white px-8 py-8 rounded-xl lg:flex lg:flex-col lg:items-center
                 md:mt-10 md:flex md:flex-col md:items-center sm:mt-10 sm:flex sm:flex-col sm:items-center 
