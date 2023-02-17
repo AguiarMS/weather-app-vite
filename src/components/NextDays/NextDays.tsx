@@ -22,12 +22,15 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
     ];
 
     return (
-      <div className="md:flex md:justify-center max-w-6xl mx-auto rounded-xl miniSmall:grid miniSmall:grid-cols-2">
+      <div
+        className="md:overflow-x-hidden mx-auto max-w-6xl miniSmall:grid miniSmall:grid-cols-5
+        pocket:grid pocket:grid-cols-[repeat(5,minmax(167px,1fr))] pocket:overflow-hidden pocket:overflow-x-scroll"
+      >
+        {/* miniSmall:grid miniSmall:grid-cols-[repeat(5,minmax(330px,1fr))] overflow-hidden overflow-x-scroll lg:overflow-x-hidden */}
         {fiveDays.map((item) => (
           <div
             key={item.date.dt_txt}
-            className="flex flex-col p-10 ml-3 mr-3 justify-center w-3xl mx-auto mt-5 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-1
-            cursor-pointer hover:scale-105 ease-in-out duration-300"
+            className="flex flex-col p-6 ml-3 mr-3 justify-center w-3xl mx-auto mt-5 bg-slate-900 bg-opacity-60 text-white text-center rounded-xl py-1"
           >
             <p className="text-md text-white font-semibold py-1">
               {handleTime(item.date.dt, "short").week}
@@ -41,7 +44,13 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
                 alt="icon-weather"
               />
             </div>
-            <p className="px-1 text-3xl font-bold text-white mb-4">
+            <p
+              className="
+              px-1 font-bold text-white mb-4
+              lg:text-3xl 
+              md:text-lg
+              "
+            >
               {item.date.main.temp.toFixed(0)} ºC
             </p>
           </div>

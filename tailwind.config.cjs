@@ -8,8 +8,10 @@ module.exports = {
         'miniSmall': '100px',
         'lg1142': '1142px',
         'md880': '860px',
+        'md600': '600px',
         'iPhoneSE': '345px',
-        'grid-default': 'repeat(4, minmax(330px, 1fr))'
+        'grid-default': 'repeat(4, minmax(330px, 1fr))',
+        'pocket': {'max': '640px'},
       }
     },
     fontFamily: {
