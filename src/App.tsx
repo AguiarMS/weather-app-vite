@@ -13,6 +13,7 @@ import {
 import { handleTime } from "./functions/handleTime";
 import { IRandonLocationData } from "./components/RandomLocation/types";
 import { Loading } from "./components/LoadingSpinner/Loading";
+import { api } from "./services/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -35,10 +36,19 @@ function App() {
     }
   }, [data]);
 
-  useEffect(() => {
-    setTimeout(() => {
+  const fetchData = async () => {
+    try {
+      const response = await api.get("https://api.openweathermap.org/data/2.5");
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   // console.log("data", data);
@@ -59,7 +69,7 @@ function App() {
           <div
             className="
             flex justify-center mr-3 ml-3
-            lg:max-w-6xl w-full lg:mr-3 lg:ml-3 
+            lg:max-w-6xl w-full lg:mr-3 lg:ml-3
             max-md:mr-20 max-md:ml-20  md:flex mt-14 
             bg-slate-900 bg-opacity-60 rounded-xl py-20"
           >
@@ -147,7 +157,7 @@ function App() {
         <>{isLoading ? <Loading /> : RandomLocation(dataRandom)}</>
       )}
 
-      {NextDaysProps(dataDays)}
+      {dataDays.length > 0 && NextDaysProps(dataDays)}
     </div>
   );
 }
