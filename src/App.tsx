@@ -36,7 +36,7 @@ function App() {
     }
   }, [data]);
 
-  const fetchData = async () => {
+  const requestTimeAPI = async () => {
     try {
       const response = await api.get("https://api.openweathermap.org/data/2.5");
       setData(response.data);
@@ -48,7 +48,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    requestTimeAPI();
   }, []);
 
   // console.log("data", data);
