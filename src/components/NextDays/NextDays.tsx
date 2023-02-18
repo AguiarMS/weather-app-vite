@@ -39,7 +39,7 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
             <p>{handleTime(item.date.dt).month}</p>
             <div className="flex justify-center">
               <img
-                className="w-40"
+                className="w-28"
                 src={IconsWeather[item.date.weather[0].main]}
                 alt="icon-weather"
               />
