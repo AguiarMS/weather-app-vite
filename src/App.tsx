@@ -23,7 +23,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    citys.forEach((item) => getRandomLocations(item, setDataRandom));
+    citys.forEach((item) => getRandomLocations(item, setDataRandom, setIsLoading));
   }, []);
 
   useEffect(() => {
@@ -35,21 +35,6 @@ function App() {
       }, 5000);
     }
   }, [data]);
-
-  const requestTimeAPI = async () => {
-    try {
-      const response = await api.get("https://api.openweathermap.org/data/2.5");
-      setData(response.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    requestTimeAPI();
-  }, []);
 
   // console.log("data", data);
   return (
