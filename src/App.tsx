@@ -13,7 +13,6 @@ import {
 import { handleTime } from "./functions/handleTime";
 import { IRandonLocationData } from "./components/RandomLocation/types";
 import { Loading } from "./components/LoadingSpinner/Loading";
-import { api } from "./services/api";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -23,7 +22,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    citys.forEach((item) => getRandomLocations(item, setDataRandom, setIsLoading));
+    citys.forEach((item) =>
+      getRandomLocations(item, setDataRandom, setIsLoading)
+    );
+    return setDataRandom([]);
   }, []);
 
   useEffect(() => {
