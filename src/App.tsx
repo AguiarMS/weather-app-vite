@@ -13,6 +13,7 @@ import {
 import { handleTime } from "./functions/handleTime";
 import { IRandonLocationData } from "./components/RandomLocation/types";
 import { Loading } from "./components/LoadingSpinner/Loading";
+import { Country } from "./services/Country/country";
 
 function App() {
   const [data, setData] = useState<WeatherProps>({} as WeatherProps);
@@ -37,6 +38,7 @@ function App() {
       }, 5000);
     }
   }, [data]);
+
 
   // console.log("data", data);
   return (

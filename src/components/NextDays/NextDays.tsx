@@ -23,7 +23,7 @@ export const NextDaysProps = (dataDays: getLocationFor5daysProps[]) => {
 
     return (
       <div
-        className="md:overflow-x-hidden mx-auto max-w-6xl miniSmall:grid miniSmall:grid-cols-5
+        className="md:overflow-x-hidden mx-auto max-w-6xl miniSmall:grid miniSmall:grid-cols-6
         pocket:grid pocket:grid-cols-[repeat(5,minmax(167px,1fr))] pocket:overflow-hidden pocket:overflow-x-scroll"
       >
         {/* miniSmall:grid miniSmall:grid-cols-[repeat(5,minmax(330px,1fr))] overflow-hidden overflow-x-scroll lg:overflow-x-hidden */}
