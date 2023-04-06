@@ -1,7 +1,7 @@
 import { searchLocation } from "../../functions/searchLocation";
 import { MessageEmptyInput } from "../MessageEmptyInput/MessageEmptyInput";
 import { InputProps } from "./types";
-
+// coment
 export const InputSearch = ({ location, setLocation, setData }: InputProps) => {
   return (
     <div className="flex justify-center">
